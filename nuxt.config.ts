@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   ssr: false,
   app: {
+    baseURL: '/my-wit-wallet-website/',
     head: {
       title: 'Get myWitWallet, your Witnet wallet.',
       meta: [
@@ -19,7 +20,7 @@ export default defineNuxtConfig({
         {
           name: 'og:description',
           content:
-            'Download myWitWallet, the desktop app that keeps your Witnet tokens safe and helps you build, share and deploy data requests into the Witnet network.',
+            'myWitWallet allows you to send and receive Wit immediately. Bye bye synchronization!',
         },
         { name: 'og:image', content: '/my-wit-wallet.png' },
         { name: 'og:url', content: 'https://myWitWallet.app' },
