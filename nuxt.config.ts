@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   ssr: false,
   app: {
-    baseURL: '/my-wit-wallet-website/',
+    baseURL: '/',
     head: {
       title: 'Get myWitWallet, your Witnet wallet.',
       meta: [
