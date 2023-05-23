@@ -3,11 +3,10 @@
     <div class="left-column">
       <div class="header">
         <img
-          src="~/assets/svg/my-wit-wallet-icon.svg"
+          src="~/assets/svg/my-wit-wallet-logo.svg"
           alt="myWitWallet logo"
           class="logo"
         />
-        <h1 class="logo-title">{{ $t('logo.my_wit_wallet') }}</h1>
       </div>
       <i18n-t keypath="title" tag="h2" class="title">
         <br />
@@ -54,56 +53,52 @@ export default {
 
 .container {
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   background: url(../assets/png/my-wit-wallet-icon-in-background.png) no-repeat;
-  background-position: 350% 300%;
+  background-position: bottom 50px;
   .left-column {
     max-width: 500px;
+    .header {
+      display: flex;
+      align-items: center;
+      .logo {
+        width: 100%;
+        max-width: 350px;
+      }
+    }
+    .title {
+      color: $black;
+      text-align: left;
+      font-size: 3em;
+      font-weight: bolder;
+      margin-top: 32px;
+      max-width: 500px;
+    }
+    .description {
+      color: $grey;
+      font-weight: 400;
+      margin-top: 16px;
+      text-align: left;
+      font-size: 1.3em;
+    }
+    .links {
+      display: flex;
+      margin-top: 24px;
+      width: 100%;
+      .link {
+        width: 100%;
+      }
+    }
   }
   .app-image {
     width: 600px;
     margin-left: 112px;
     box-shadow: 0px 6px 30px 5px rgba(24, 122, 96, 0.25);
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    .logo-title {
-      margin-left: 16px;
-      font-size: 2em;
-      color: $alt-grey;
-      font-weight: bold;
-      .wallet {
-        font-weight: normal;
-      }
-    }
-  }
-  .title {
-    color: $black;
-    text-align: left;
-    font-size: 3em;
-    font-weight: bolder;
-    margin-top: 32px;
-    max-width: 500px;
-  }
-  .description {
-    color: $grey;
-    font-weight: 400;
-    margin-top: 16px;
-    text-align: left;
-    font-size: 1.3em;
-  }
-  .links {
-    display: flex;
-    margin-top: 24px;
-    width: 100%;
-    .link {
-      width: 100%;
-    }
   }
   .footer {
     color: $grey;
@@ -112,96 +107,38 @@ export default {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
   .container {
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
     .app-image {
       display: none;
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 24px;
+    height: max-content;
     .left-column {
-      max-width: 90vw;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       .header {
-        margin-top: 16px;
-      }
-      .footer {
-        margin-bottom: 16px;
-      }
-      .links {
-        flex-direction: column;
-      }
-      .btn {
-        width: 100%;
-      }
-      .link {
-        margin-top: 8px;
-        margin-left: 0;
-        justify-content: center;
+        .logo {
+          width: 80vw;
+        }
       }
     }
   }
 }
 
-@media (max-width: 1200px) and (min-width: 768px) {
+@media (max-width: 300px) {
   .container {
-    flex-direction: column;
-    justify-content: space-around;
-    .app-image {
-      display: block;
-      margin-left: 0;
-    }
+    padding: 16px;
+    height: max-content;
     .left-column {
-      max-width: 90vw;
-      .header {
-        margin-top: 16px;
-      }
-      .footer {
-        margin-bottom: 16px;
-      }
-      .links {
-        flex-direction: column;
-      }
-      .btn {
-        width: 100%;
-      }
-      .link {
-        margin-top: 8px;
-        margin-left: 0;
-        justify-content: center;
-      }
-    }
-  }
-}
-
-@media (max-width: 700px) {
-  .app-image {
-    display: none;
-  }
-  .container {
-    .left-column {
-      max-width: 90vw;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      .header {
-        margin-top: 16px;
-      }
-      .footer {
-        margin-bottom: 16px;
-      }
-      .links {
-        flex-direction: column;
-      }
-      .btn {
-        width: 100%;
-      }
-      .link {
-        margin-top: 8px;
-        margin-left: 0;
-        justify-content: center;
+      .title {
+        font-size: 2em;
       }
     }
   }
