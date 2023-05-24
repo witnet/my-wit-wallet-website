@@ -20,7 +20,7 @@ export default defineNuxtConfig({
         {
           name: 'og:description',
           content:
-            'myWitWallet allows you to send and receive Wit immediately. Bye bye synchronization!',
+            'myWitWallet allows you to send and receive Wit immediately. Bye bye synchronization!!',
         },
         { name: 'og:image', content: '/my-wit-wallet.png' },
         { name: 'og:url', content: 'https://myWitWallet.app' },
