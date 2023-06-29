@@ -1,13 +1,15 @@
 <template>
   <div class="container">
     <div class="left-column">
-      <div class="header">
-        <img
-          src="~/assets/svg/my-wit-wallet-logo.svg"
-          alt="myWitWallet logo"
-          class="logo"
-        />
-      </div>
+      <h1 class="logo">
+        <a href="https://mywitwallet.com/">
+          <img
+            src="~/assets/svg/my-wit-wallet-logo.svg"
+            alt="myWitWallet logo"
+            class="logo"
+          />
+        </a>
+      </h1>
       <i18n-t keypath="title" tag="h2" class="title">
         <br />
       </i18n-t>
@@ -59,17 +61,11 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url(../assets/png/my-wit-wallet-icon-in-background.png) no-repeat;
-  background-position: bottom 50px;
   .left-column {
     max-width: 500px;
-    .header {
-      display: flex;
-      align-items: center;
-      .logo {
-        width: 100%;
-        max-width: 350px;
-      }
+    .logo {
+      width: 100%;
+      max-width: 350px;
     }
     .title {
       color: $black;
@@ -98,7 +94,8 @@ export default {
   .app-image {
     width: 600px;
     margin-left: 112px;
-    box-shadow: 0px 6px 30px 5px rgba(24, 122, 96, 0.25);
+    box-shadow: 0px 6px 30px 5px rgba(68, 66, 87, 0.25);
+    border-radius: 8px;
   }
   .footer {
     color: $grey;
@@ -123,10 +120,8 @@ export default {
     padding: 24px;
     height: max-content;
     .left-column {
-      .header {
-        .logo {
-          width: 80vw;
-        }
+      .logo {
+        width: 80vw;
       }
     }
   }
