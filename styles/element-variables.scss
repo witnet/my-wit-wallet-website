@@ -1,28 +1,27 @@
-
 $colors: (
-        'primary': (
-                'base': #021D30,
-        ),
-        'success': (
-                'base': #13ce66,
-        ),
-        'warning': (
-                'base': #ffba00,
-        ),
-        'danger': (
-                'base': #ff4949,
-        ),
-        'error': (
-                'base': #db2828,
-        ),
-        'info': (
-                'base': #42b8dd,
-        ),
+  'primary': (
+    'base': #021d30,
+  ),
+  'success': (
+    'base': #13ce66,
+  ),
+  'warning': (
+    'base': #ffba00,
+  ),
+  'danger': (
+    'base': #ff4949,
+  ),
+  'error': (
+    'base': #db2828,
+  ),
+  'info': (
+    'base': #42b8dd,
+  ),
 );
 
-@forward "element-plus/theme-chalk/src/common/var.scss" with (
-// do not use same name, it will override.
-$colors: $colors
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  // do not use same name, it will override.
+  $colors: $colors
 );
 
-@use "element-plus/theme-chalk/src/index.scss" as *;
+@use 'element-plus/theme-chalk/src/index.scss' as *;
