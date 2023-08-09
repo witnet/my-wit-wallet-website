@@ -4,23 +4,29 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/',
     head: {
-      title: 'Get myWitWallet, your Witnet wallet.',
+      title:
+        'myWitWallet: Your Secure & Instant Non-Custodial Wallet for Witnet',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'description',
           name: 'description',
-          content: 'Get myWitWallet',
+          content:
+            'The ultimate non-custodial wallet for your Wit coins—secure, fast, and seamless. Download now!',
         },
         { name: 'theme-color', content: '#b566ff' },
         { name: 'robots', content: 'index, follow' },
         { name: 'og:type', content: 'website' },
-        { name: 'og:title', content: 'Get myWitWallet' },
+        {
+          name: 'og:title',
+          content:
+            'myWitWallet: Your Secure & Instant Non-Custodial Wallet for Witnet',
+        },
         {
           name: 'og:description',
           content:
-            'myWitWallet allows you to send and receive Wit immediately. Bye bye synchronization!!',
+            'The ultimate non-custodial wallet for your Wit coins—secure, fast, and seamless. Download now!',
         },
         { name: 'og:image', content: '/my-wit-wallet.png' },
         { name: 'og:url', content: 'https://myWitWallet.app' },
