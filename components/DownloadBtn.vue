@@ -3,6 +3,7 @@
     v-if="release.platform"
     class="link"
     :href="release.releaseUrl"
+    target="_blank"
     :download="release.downloadName"
   >
     <ElButton class="btn" type="primary">

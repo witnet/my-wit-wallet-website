@@ -17,9 +17,6 @@ export async function getLatestRelease(navigator: any): Promise<Release> {
     const linuxRelease = await result.data.assets.find((asset: any) =>
       asset.browser_download_url.includes('linux.tar.gz')
     )
-    const windowsRelease = await result.data.assets.find((asset: any) =>
-      asset.browser_download_url.includes('myWitWallet-windows.zip')
-    )
     const release: Record<string, Release> = {
       linux: {
         platform: 'GNU / Linux',
@@ -28,13 +25,13 @@ export async function getLatestRelease(navigator: any): Promise<Release> {
       },
       win: {
         platform: 'Windows',
-        releaseUrl: windowsRelease.browser_download_url,
-        downloadName: windowsRelease.name,
+        releaseUrl: 'https://apps.microsoft.com/detail/9PN09DKWPL57',
+        downloadName: 'myWitWallet',
       },
       mac: {
         platform: 'Mac OS',
         releaseUrl: macRelease.browser_download_url,
-        downloadName: windowsRelease.name,
+        downloadName: macRelease.name,
       },
     }
     return release[os]
