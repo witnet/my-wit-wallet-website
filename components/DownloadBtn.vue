@@ -1,15 +1,15 @@
 <template>
   <a
-    v-if="releaseContent && releaseContent.downloadName"
+    v-if="release && release.downloadName"
     class="link"
-    :href="releaseContent.releaseUrl"
+    :href="release.releaseUrl"
     target="_blank"
-    :download="releaseContent.downloadName"
+    :download="release.downloadName"
   >
     <button class="btn">
       <i18n-t keypath="downloadLink" tag="span">
         <template #platform>
-          <span>{{ releaseContent.platform }}</span>
+          <span>{{ release.platform }}</span>
         </template>
       </i18n-t>
     </button>
@@ -17,12 +17,12 @@
   <a
     v-else
     class="link"
-    :href="releaseContent ? releaseContent.releaseUrl : GITHUB_RELEASE_URL"
+    :href="release ? release.releaseUrl : GITHUB_RELEASE_URL"
   >
     <button class="btn">
-      <i18n-t v-if="releaseContent" keypath="downloadLink" tag="span">
+      <i18n-t v-if="release" keypath="downloadLink" tag="span">
         <template #platform>
-          <span>{{ releaseContent?.platform }}</span>
+          <span>{{ release?.platform }}</span>
         </template>
       </i18n-t>
       <span v-else>{{ t('githubLink') }}</span>
@@ -30,31 +30,23 @@
   </a>
 </template>
 
-<script setup>
-import { getLatestRelease, getStoreRelease } from '@/getLatestRelease'
+<script setup lang="ts">
+import { getLatestRelease, getStoreRelease, type LatestReleaseResponse } from '@/getLatestRelease'
 import { getBrowserOs } from '@/getBrowserOs'
 import { useI18n } from 'vue-i18n'
-import { GITHUB_RELEASE_URL } from '@/constants'
-import { onMounted, ref } from 'vue'
+import { GITHUB_RELEASE_URL, URL_RELEASE_BASE } from '@/constants'
+import { computed, type Ref } from 'vue'
 const { t } = useI18n()
 
-const releaseContent = ref(null)
+const { data }: { data: Ref<LatestReleaseResponse | undefined> } =
+  await useFetch(URL_RELEASE_BASE)
 
-onMounted(async () => {
-  releaseContent.value = await release()
-})
+const os = computed(() => getBrowserOs(navigator))
 
-async function release() {
-  const os = getBrowserOs(navigator)
-  const storeRelease = getStoreRelease({ os })
-  if (!os) {
-    return null
-  }
-  if (storeRelease) {
-    return storeRelease
-  }
-  return await getLatestRelease({ os })
-}
+const storeRelease = computed(() => os.value ? getStoreRelease({ os: os.value }) : null)
+const downloadRelease = computed(() => os.value ? getLatestRelease({ os: os.value, data: data.value }) : null)
+const release = computed(() => storeRelease.value ?? downloadRelease.value)
+
 </script>
 
 <style lang="scss">

@@ -1,16 +1,16 @@
-import { GITHUB_RELEASE_URL, URL_RELEASE_BASE } from './constants'
+import { GITHUB_RELEASE_URL } from './constants'
 
-type Release = {
+export type Release = {
   platform: string
   releaseUrl: string
   downloadName: string | null
 }
 
-type LatestReleaseResponse = {
-  assets: []
+export type LatestReleaseResponse = {
+  assets: Array<ReleaseAsset>
 }
 
-type ReleaseAsset = {
+export type ReleaseAsset = {
   browser_download_url: string
   name: string | null
 }
@@ -41,21 +41,20 @@ export function getStoreRelease({ os }: { os: string }): Release | undefined {
   }
 }
 
-const { data }: { data: Ref<LatestReleaseResponse | undefined> } =
-  await useAsyncData('release', () => $fetch(URL_RELEASE_BASE))
-
-export async function getLatestRelease({
+export function getLatestRelease({
   os,
+  data,
 }: {
   os: string
-}): Promise<Release | null> {
-  if (data.value) {
-    const macRelease: ReleaseAsset = data.value.assets.find(
+  data: LatestReleaseResponse | undefined
+}): Release | null {
+  if (data) {
+    const macRelease: ReleaseAsset = data.assets.find(
       (asset: ReleaseAsset) => {
         return asset.browser_download_url.includes('myWitWallet.dmg')
       },
     ) ?? { browser_download_url: GITHUB_RELEASE_URL, name: null }
-    const linuxRelease: ReleaseAsset = data.value.assets.find(
+    const linuxRelease: ReleaseAsset = data.assets.find(
       (asset: ReleaseAsset) =>
         asset.browser_download_url.includes('linux.tar.gz'),
     ) ?? { browser_download_url: GITHUB_RELEASE_URL, name: null }
