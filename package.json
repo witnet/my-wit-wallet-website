@@ -10,11 +10,12 @@
     "postinstall": "nuxi prepare",
     "lint:js": "eslint -c eslint.config.js --ignore-pattern .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint": "yarn lint:js && yarn lint:prettier",
+    "lint": "pnpm lint:js && pnpm lint:prettier",
     "lintfix": "prettier --write --list-different . && pnpm lint:js --fix"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
+    "@nuxt/eslint-config": "^0.7.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/node": "^18",
     "@typescript-eslint/parser": "^5.59.5",

@@ -1,8 +1,8 @@
 # Ignore build output directories
 .nuxt/
+.output/
 dist/
-./docs/** */
-./docs/_nuxt/** */
+docs/
 DEBUG=1/** */
 
 # Ignore node modules
