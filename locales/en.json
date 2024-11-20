@@ -8,6 +8,7 @@
     "my_wit_wallet": "myWitWallet"
   },
   "title": "Get myWitWallet,{0} your Witnet light wallet",
-  "download": "Download myWitWallet for {platform}",
+  "downloadLink": "Download myWitWallet for {platform}",
+  "githubLink": "Download myWitWallet on GitHub",
   "source_code": "Check out the source code on {github}"
 }
