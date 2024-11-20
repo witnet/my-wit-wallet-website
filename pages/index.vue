@@ -15,7 +15,9 @@
       </i18n-t>
       <p class="description">{{ $t('description') }}</p>
       <div class="links">
-        <DownloadBtn />
+        <ClientOnly>
+          <DownloadBtn />
+        </ClientOnly>
       </div>
       <i18n-t keypath="source_code" tag="p" class="footer">
         <template #github>
@@ -51,8 +53,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/styles/colors.scss';
-
 .container {
   margin: 0 auto;
   height: 100vh;

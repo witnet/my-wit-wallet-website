@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
+
   app: {
     baseURL: '/',
     head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
       title:
         'myWitWallet: Your Secure & Instant Non-Custodial Wallet for Witnet',
       meta: [
@@ -30,7 +34,6 @@ export default defineNuxtConfig({
         },
         { name: 'og:image', content: '/my-wit-wallet.png' },
         { name: 'og:url', content: 'https://myWitWallet.app' },
-        { name: 'og:locale:alternate', content: 'es_ES' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -41,19 +44,19 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ['~/styles/colors.scss', '~/styles/main.scss'],
+
+  css: ['~/styles/main.scss'],
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: "@import '@/styles/element-variables.scss';",
+          api: 'modern-compiler',
+          additionalData: '@use "~/styles/colors.scss" as *;',
         },
       },
     },
   },
   components: true,
-  modules: ['@element-plus/nuxt'],
-  elementPlus: {
-    components: ['ElButton'],
-  },
+
+  compatibilityDate: '2024-11-19',
 })
