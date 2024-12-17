@@ -49,14 +49,11 @@ export function getLatestRelease({
   data: LatestReleaseResponse | undefined
 }): Release | null {
   if (data) {
-    const macRelease: ReleaseAsset = data.assets.find(
-      (asset: ReleaseAsset) => {
-        return asset.browser_download_url.includes('myWitWallet.dmg')
-      },
-    ) ?? { browser_download_url: GITHUB_RELEASE_URL, name: null }
-    const linuxRelease: ReleaseAsset = data.assets.find(
-      (asset: ReleaseAsset) =>
-        asset.browser_download_url.includes('linux.tar.gz'),
+    const macRelease: ReleaseAsset = data.assets.find((asset: ReleaseAsset) => {
+      return asset.browser_download_url.includes('myWitWallet.dmg')
+    }) ?? { browser_download_url: GITHUB_RELEASE_URL, name: null }
+    const linuxRelease: ReleaseAsset = data.assets.find((asset: ReleaseAsset) =>
+      asset.browser_download_url.includes('linux.tar.gz'),
     ) ?? { browser_download_url: GITHUB_RELEASE_URL, name: null }
 
     const release: Record<string, Release> = {

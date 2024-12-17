@@ -31,7 +31,11 @@
 </template>
 
 <script setup lang="ts">
-import { getLatestRelease, getStoreRelease, type LatestReleaseResponse } from '@/getLatestRelease'
+import {
+  getLatestRelease,
+  getStoreRelease,
+  type LatestReleaseResponse,
+} from '@/getLatestRelease'
 import { getBrowserOs } from '@/getBrowserOs'
 import { useI18n } from 'vue-i18n'
 import { GITHUB_RELEASE_URL, URL_RELEASE_BASE } from '@/constants'
@@ -43,10 +47,13 @@ const { data }: { data: Ref<LatestReleaseResponse | undefined> } =
 
 const os = computed(() => getBrowserOs(navigator))
 
-const storeRelease = computed(() => os.value ? getStoreRelease({ os: os.value }) : null)
-const downloadRelease = computed(() => os.value ? getLatestRelease({ os: os.value, data: data.value }) : null)
+const storeRelease = computed(() =>
+  os.value ? getStoreRelease({ os: os.value }) : null,
+)
+const downloadRelease = computed(() =>
+  os.value ? getLatestRelease({ os: os.value, data: data.value }) : null,
+)
 const release = computed(() => storeRelease.value ?? downloadRelease.value)
-
 </script>
 
 <style lang="scss">
