@@ -44,7 +44,10 @@ export default defineNuxtConfig({
       ],
     },
   },
-
+  modules: ['nuxt-gtag'],
+  gtag: {
+    id: 'GTM-WXTPK299',
+  },
   css: ['~/styles/main.scss'],
   vite: {
     css: {
