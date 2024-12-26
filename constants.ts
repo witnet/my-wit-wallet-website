@@ -26,7 +26,7 @@ export const fallbackLocale = 'en'
 
 export const DEFAULT_OS = 'Linux'
 export const GITHUB_RELEASE_URL =
-  'https://github.com/witnet/sheikah/releases/latest'
+  'https://github.com/witnet/my-wit-wallet/releases/latest'
 
 export const URL_RELEASE_BASE =
   'https://api.github.com/repos/witnet/my-wit-wallet/releases/latest'
