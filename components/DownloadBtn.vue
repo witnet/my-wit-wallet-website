@@ -6,31 +6,32 @@
     target="_blank"
     :download="release.downloadName"
   >
-    <button class="btn">
+    <WButton :type="ButtonType.primary">
       <i18n-t keypath="downloadLink" tag="span">
         <template #platform>
           <span>{{ release.platform }}</span>
         </template>
       </i18n-t>
-    </button>
+    </WButton>
   </a>
   <a
     v-else
     class="link"
     :href="release ? release.releaseUrl : GITHUB_RELEASE_URL"
   >
-    <button class="btn">
+    <WButton :type="ButtonType.primary">
       <i18n-t v-if="release" keypath="downloadLink" tag="span">
         <template #platform>
           <span>{{ release?.platform }}</span>
         </template>
       </i18n-t>
       <span v-else>{{ t('githubLink') }}</span>
-    </button>
+    </WButton>
   </a>
 </template>
 
 <script setup lang="ts">
+import { ButtonType, WButton } from 'wit-vue-ui'
 import {
   getLatestRelease,
   getStoreRelease,
@@ -55,11 +56,3 @@ const downloadRelease = computed(() =>
 )
 const release = computed(() => storeRelease.value ?? downloadRelease.value)
 </script>
-
-<style lang="scss">
-.link {
-  width: max-content;
-  height: auto;
-  display: flex;
-}
-</style>

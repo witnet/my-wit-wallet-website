@@ -13,7 +13,7 @@
       <i18n-t keypath="title" tag="h2" class="title">
         <br />
       </i18n-t>
-      <p class="description">{{ $t('description') }}</p>
+      <p class="description text">{{ $t('description') }}</p>
       <div class="links">
         <ClientOnly>
           <DownloadBtn />
@@ -21,9 +21,11 @@
       </div>
       <i18n-t keypath="source_code" tag="p" class="footer">
         <template #github>
-          <a href="https://github.com/witnet/my-wit-wallet" target="_blanc">
-            Github
-          </a>
+          <WLink
+            href="https://github.com/witnet/my-wit-wallet"
+            :label="'Github'"
+            :underline="true"
+          />
         </template>
       </i18n-t>
     </div>
@@ -35,21 +37,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  head() {
-    return {
-      name: 'index',
-      title: this.$t('head.title'),
-      meta: [
-        {
-          name: this.$t('head.title'),
-          content: this.$t('description'),
-        },
-      ],
-    }
-  },
-}
+<script setup>
+import { WLink } from 'wit-vue-ui'
+import 'wit-vue-ui/style.css'
 </script>
 
 <style lang="scss">
@@ -70,8 +60,9 @@ export default {
     .title {
       color: $black;
       text-align: left;
-      font-size: 3em;
-      font-weight: bolder;
+      font-size: 2.2em;
+      font-weight: bold;
+      line-height: 1.2;
       margin-top: 32px;
       max-width: 500px;
     }
@@ -80,7 +71,7 @@ export default {
       font-weight: 400;
       margin-top: 16px;
       text-align: left;
-      font-size: 1.3em;
+      font-size: 1.2em;
     }
     .links {
       display: flex;
@@ -101,6 +92,7 @@ export default {
     color: $grey;
     text-align: left;
     margin-top: 16px;
+    font-size: 1em;
   }
 }
 
